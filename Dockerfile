@@ -15,10 +15,12 @@ RUN git clone https://github.com/mredar/DPLA-ingestion ingestion
 WORKDIR ingestion
 RUN pip install --no-deps --ignore-installed -r requirements.txt
 
-ADD ./akara.ini code/dpla/ingestion/akara.ini
-RUN python setup.py install
-RUN akara -f akara.conf setup
+ADD ./akara.ini.tmpl /code/dpla/ingestion/akara.ini.tmpl
+
+WORKDIR /
+ADD ./run.sh /run.sh
+RUN chmod 755 /*.sh
 
 EXPOSE 8889 
 
-CMD akara -f akara.conf start -X
+CMD ["/run.sh"]
