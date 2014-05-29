@@ -10,4 +10,5 @@ if [ ! -f /code/dpla/ingestion/akara.conf ]; then
     akara -f akara.conf setup
 fi
 
-akara -f akara.conf start -X
+#start -f for ignoring pid, -X for debug output, useful from docker logs
+akara -f akara.conf start -X -f
