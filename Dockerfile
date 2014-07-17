@@ -11,7 +11,7 @@ RUN apt-get install -y -q python-pip
 
 RUN mkdir -p /code/dpla
 WORKDIR /code/dpla
-RUN git clone https://github.com/mredar/DPLA-ingestion ingestion
+RUN git clone https://github.com/mredar/DPLA-ingestion --branch=ucldc ingestion
 WORKDIR ingestion
 RUN pip install --no-deps --ignore-installed -r requirements.txt
 
